@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Data Dog</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Data Dog" />
+    <meta name="robots" content="index, follow, noodp" />
+    <meta name="keywords" content="data dog" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'libraries/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    {% block extra_css %}{% endblock extra_css %}
+</head>
+
+<body>
+    <div class="container">
+        {% block content %}
+            <!-- content here -->
+        {% endblock content %}
+    </div>
+    <script type="text/javascript" src="{% static 'libraries/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libraries/bootstrap/js/bootstrap.js' %}"></script>
+</body>
+</html>

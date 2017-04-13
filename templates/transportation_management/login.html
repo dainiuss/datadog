@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+{% endblock extra_css %}
+
+{% block content %}
+<div class="login">
+	<h1>Login</h1>
+    <form action="{% url 'transportation-management:authenticate' %}" method="post">
+        {% csrf_token %}
+    	<input type="text" name="username" placeholder="Username" required="required" />
+        <input type="password" name="password" placeholder="Password" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Login</button>
+    </form>
+    <input type="hidden" name="next" value="{{ next }}" />
+</div>
+{% endblock content %}
