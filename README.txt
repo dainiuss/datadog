@@ -38,3 +38,9 @@ tr = TravelReport.objects.create(vehicle=vehicle,
                                  time_unloading=10,
                                  speedometer_at_leaving=200200,
                                  speedometer_at_arrival=200250)
+
+# URLS:
+http://127.0.0.1:8800/logout
+http://127.0.0.1:8800/list
+http://127.0.0.1:8800/create
+http://127.0.0.1:8800/read/1
