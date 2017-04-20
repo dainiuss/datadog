@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="login">
-	<h1>Login</h1>
+    <h1>Login</h1>
     <form action="{% url 'transportation-management:authenticate' %}" method="post">
         {% csrf_token %}
     	<input type="text" name="username" placeholder="Username" required="required" />

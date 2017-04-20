@@ -14,7 +14,7 @@ class Vehicle(models.Model):
     takes_fuel_while_unloading = models.PositiveIntegerField()  # liter/hour
 
     def __str__(self):
-        return '<Vehicle: {}>'.format(self.vehicle_name)
+        return 'Vehicle: {}'.format(self.vehicle_name)
 
 
 class TravelReport(models.Model):

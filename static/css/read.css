@@ -1,0 +1,8 @@
+.travel-record-details dt {
+    width: 250px;
+    font-weight: 700;
+}
+
+.travel-record-details dd {
+    margin-left: 270px;
+}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/data_common.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/read.css' %}"/>
+{% endblock extra_css %}
+
+{% block content %}
+    <h1>Travel Record to {{ travel_report.route }} on {{ travel_report.date }}</h1>
+    <div class="travel-record-details">
+        <dl class="dl-horizontal">
+            <dt>Vehicle:</dt>
+            <dd>{{ travel_report.vehicle.vehicle_name }}</dd>
+            <dt>Route:</dt>
+            <dd>{{ travel_report.route }}</dd>
+            <dt>Date:</dt>
+            <dd>{{ travel_report.date }}</dd>
+            <dt>Left Terminal:</dt>
+            <dd>{{ travel_report.time_left_terminal }}</dd>
+            <dt>Arrived to Client:</dt>
+            <dd>{{ travel_report.time_arrived_to_client }}</dd>
+            <dt>Left Client:</dt>
+            <dd>{{ travel_report.time_left_client }}</dd>
+            <dt>Arrived back to terminal:</dt>
+            <dd>{{ travel_report.time_back_to_terminal }}</dd>
+
+            <dt>Took time unloading:</dt>
+            <dd>{{ travel_report.time_unloading }}</dd>
+            <dt>Start Speedomented</dt>
+            <dd>{{ travel_report.speedometer_at_leaving }}</dd>
+            <dt>End Speedomented</dt>
+            <dd>{{ travel_report.speedometer_at_arrival }}</dd>
+            <dt>Distance Traveled:</dt>
+            <dd>{{ travel_report.distance }}</dd>
+            <dt>Fuel Consumed:</dt>
+            <dd>{{ travel_report.fuel_consumed }}</dd>
+        </dl>
+    </div>
+{% endblock content %}

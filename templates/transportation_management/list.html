@@ -1,5 +1,52 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/data_common.css' %}"/>
+{% endblock extra_css %}
 
 {% block content %}
-LIST PAGE
+    <h1>Travel Records</h1>
+    <div class="travel-records-list">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>No.</th>
+                <th>Date</th>
+                <th>Route</th>
+                <th>Left Terminal</th>
+                <th>Speedometer</th>
+                <th>Arrived to Client</th>
+                <th>Unloading Time</th>
+                <th>Left Client</th>
+                <th>Back to Terminal</th>
+                <th>Speedometer</th>
+                <th>Distance</th>
+                <th>Fuel</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for report in travel_reports %}
+                <tr>
+                    <td>{{ report.id }}</td>
+                    <td>{{ report.date }}</td>
+                    <td>{{ report.route }}</td>
+                    <td>{{ report.time_left_terminal }}</td>
+                    <td>{{ report.speedometer_at_leaving }}</td>
+                    <td>{{ report.time_arrived_to_client }}</td>
+                    <td>{{ report.time_unloading }}</td>
+                    <td>{{ report.time_left_client }}</td>
+                    <td>{{ report.time_back_to_terminal }}</td>
+                    <td>{{ report.speedometer_at_arrival }}</td>
+                    <td>{{ report.distance }}</td>
+                    <td>{{ report.fuel_consumed }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
 {% endblock content %}

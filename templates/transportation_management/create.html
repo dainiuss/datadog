@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/data_common.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}"/>
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="submit-transport-report">
+        <h1>Create travel record</h1>
+
+        {% if form or error %}
+            {% if form.errors or error %}
+                <div class="alert alert-danger no-margin fade in">
+                    <button class="close" data-dismiss="alert">
+                        x
+                    </button>
+                    <ul>
+                        {% for error,msg in form.errors.items %}
+                            <li>{{ msg.as_text|escape|slice:"2:" }}</li>
+                        {% endfor %}
+                        {% if error %}
+                            <li>{{ error }}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+        <form class="form-horizontal" action="{% url 'transportation-management:create' %}" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="vehicle" class="col-sm-2 control-label">Vehicle</label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="vehicle">
+                        <option value="">Select vehicle</option>
+                        {% for vehicle in vehicles %}
+                            <option value="{{ vehicle.id }}">{{ vehicle.vehicle_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="route" class="col-sm-2 control-label">Route</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="route" value="{{ form.route.value }}"
+                           placeholder="Route">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="time_unloading" class="col-sm-2 control-label">Date</label>
+                <div class="col-sm-6 input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control" name="date" value="{{ form.date.value }}">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="time_left_terminal" class="col-sm-2 control-label">Time left terminal</label>
+                <div class="col-sm-6 input-group bootstrap-timepicker timepicker">
+                    <input id="timepicker1" type="text" name="time_left_terminal"
+                           value="{{ form.time_left_terminal.value }}"
+                           class="form-control input-small">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="time_arrived_to_client" class="col-sm-2 control-label">Time arrived to client</label>
+                <div class="col-sm-6 input-group bootstrap-timepicker timepicker">
+                    <input id="timepicker2" type="text" name="time_arrived_to_client"
+                           value="{{ form.time_arrived_to_client.value }}"
+                           class="form-control input-small">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="time_left_client" class="col-sm-2 control-label">Time left client</label>
+                <div class="col-sm-6 input-group bootstrap-timepicker timepicker">
+                    <input id="timepicker3" type="text" name="time_left_client"
+                           value="{{ form.time_left_client.value }}"
+                           class="form-control input-small">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="time_back_to_terminal" class="col-sm-2 control-label">Time back to terminal</label>
+                <div class="col-sm-6 input-group bootstrap-timepicker timepicker">
+                    <input id="timepicker4" type="text" name="time_back_to_terminal" value="{{ form.timepicker.value }}"
+                           class="form-control input-small">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="time_unloading" class="col-sm-2 control-label">Unloading time</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="time_unloading"
+                           value="{{ form.time_unloading.value }}" placeholder="Unloading time">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="speedometer_at_leaving" class="col-sm-2 control-label">Speedometer at leaving</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="speedometer_at_leaving"
+                           value="{{ form.speedometer_at_leaving.value }}"
+                           placeholder="Speedometer at leaving">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="speedometer_at_arrival" class="col-sm-2 control-label">Speedometer at arrival</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="speedometer_at_arrival"
+                           value="{{ form.speedometer_at_arrival.value }}"
+                           placeholder="Speedometer at arrival">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
